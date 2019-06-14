@@ -1,0 +1,179 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+	background: #564351;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+main {
+   position: relative;
+}
+
+article {
+    display: flex;
+}
+
+marquee {
+    height: 142px;
+    width: 75px;
+
+    position: absolute;
+    top: 71.3%;
+    right: 83.3%;
+
+    display: flex;
+
+    border-radius: 7px;
+    margin: 1px;
+}
+
+section {
+    height: 70px;
+    width: 75px;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    border-radius: 5px;
+    margin: 1px;
+}
+
+strike {
+    height: 50px;
+    width: 80px;
+    color: rgb(244, 235, 235);
+    text-overflow: ellipsis;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    box-shadow: 1px 1px 1px 1px #798080;
+    margin-right: 17px;
+}
+
+ruby, samp, ins {
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    color: rgb(244, 235, 235);
+}
+ins {
+    text-decoration: none;
+    font-size: 9px;
+}
+samp {
+    font-size: 9px;
+}
+rt {
+    font-size: 10px;
+
+    padding: 2px 28px 0 0;
+}
+rb {
+    font-weight:bold;
+    font-size: 24px;
+}
+
+kbd {
+    position: absolute;
+
+    display: flex;
+
+    margin: 26px 0 0 223px;
+}
+
+p {
+    position: absolute;
+    top: -87px;
+    left: 31%;
+    font-size: 26px;
+}
+.empty {
+    background: none;
+}
+
+.nonmetal {
+	background: linear-gradient(to bottom right, #2f3f42, #109fa5);
+}
+
+.actinide {
+    background: linear-gradient(to bottom right, rgb(206, 241, 180), rgb(26, 37, 21));
+}
+
+.lanthanide {
+    background: linear-gradient(to bottom right, rgb(198, 233, 241), rgb(40, 53, 56));
+}
+
+.noble_gas {
+    background: linear-gradient(to bottom right, rgb(218, 198, 242), rgb(78, 21, 86));
+}
+
+.halogen {
+    background: linear-gradient(to bottom right, rgb(231, 235, 161), rgb(101, 103, 68));
+}
+.basic_metal {
+	background: linear-gradient(to bottom right, rgb(243, 230, 201), rgb(41, 30, 0));
+}
+
+.transition_metal {
+	background: linear-gradient(to bottom right, #a7ec28, #000000);
+}
+
+.alkali_metal {
+	background: linear-gradient(to bottom right, #211f1b, #7d7561);
+}
+
+.alkaline_metal {
+	background: linear-gradient(to bottom right, #423e39, #e69319);
+}
+
+.semi_metal {
+    background: linear-gradient(to bottom right, rgb(239, 162, 201), rgb(47, 27, 60));
+}
+
+.emptyone {
+    width: 1230px;
+}
+
+.emptytwo {
+    width: 768px;
+}
+.emptythree {
+    width: 768px;
+}
+
+.change {
+    animation: a 6s ease-in-out forwards;
+    z-index:2;
+}
+
+.clone {
+    position: absolute;
+    transform: scale(2);
+}
+
+.screen {
+    position: absolute;
+    top: 7%;
+    right: 58%;
+}
+
+@keyframes a {
+    from {
+        transform:translateX(0) scale(1);
+        transform: rotate(0deg);
+    }
+    to {
+        transform: translateX(10px);
+        transform: scale(1.05);
+        transform: rotate(-360deg);
+    }
+}
+
+

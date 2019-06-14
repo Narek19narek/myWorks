@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/jpg" href="icon.png" />
+    <link rel="stylesheet" type="text/css" href="periodic.css"/>
+    <script type="text/javascript" src="array.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <title>Periodic Table</title>
+</head>
+<body>
+<script>
+    function createTable(options) {
+        var $main = $('<main>'),
+            $marquee = $('<marquee>'),
+            $div = $('<div>').addClass('screen'),
+            $p = $('<p>'),
+            data = options.data;
+
+            $main.append($div, $p);
+            $p.text('PERIODIC TABLE OF THE ELEMENTS');
+            
+            options.parent.append($main);
+
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF',
+                    color = '#';
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            setInterval(function () { $p.style.color = getRandomColor() }, 1000);
+
+        for (let i = 0; i < data.length; i++) {
+            options.data = data[i];
+            options.parent = $main;
+
+            if (data.length - i < 3) {
+                options.parent = $marquee;
+            }
+
+            $main.append($marquee);
+            
+            createRow(options);
+        }
+    }
+
+    function createRow(options) {
+        var $article = $('<article>'),
+            data = options.data;
+        options.parent.append($article);
+        
+        for (let j = 0; j < data.length; j++) {
+                options.data = data[j];
+                options.parent = $article;
+                       
+                createTile(options);
+        }
+    }
+
+    function createTile(options) {
+        var $section, $ruby, $rb, $rt, $samp, $ins;
+        $section = $('<section>');
+
+        if (undefined === options.data.element) {
+            $section.className = options.data.class;
+        }
+        else {
+            $rt = $('<rt>')
+                .text(options.data.atomicNumber);
+
+            $rb = $('<rb>')
+                .text(options.data.symbol)
+                .attr('title', options.data.symbol);
+
+            $ruby = $('<ruby>')
+                .append($rt, $rb);
+
+            $samp = $('<samp>')
+                .text(options.data.element);
+
+            $ins = $('<ins>')
+                .text(options.data.mass);
+
+            $section
+                .addClass(options.data.class)
+                .append($ruby, $samp, $ins);
+        }
+        options.parent.append($section);
+
+        var $screen = $('.screen')[0];
+
+        $section.onmouseenter = function (e) {
+            var elem = e.target.cloneNode(true);
+            elem.addClass('clone');
+
+            $screen
+                .html('')
+                .append(elem);
+        }
+    }
+
+    createTable({ parent: document.body, data: source.matrix });
+
+    function createOtherRow(options) {
+        var $kbd = $('<kbd>'),
+            data = options.data,
+            $strike;
+
+        options.parent.append($kbd);
+
+        for (let j = 0; j < data.length; j++) {
+
+            $strike = $('<strike>')
+                .addClass(options.data[j].class)
+        
+                .text(options.data[j].elemType);
+
+            $kbd.append($strike);
+
+            $strike.onclick = function () {
+                var currentClass = this.className,
+                    currentElem = document.getElementsByClassName(currentClass),
+                    sections = document.getElementsByTagName('section');
+                    strikes = document.getElementsByTagName('strike');
+
+                for (let k = 0; k < strikes.length; k++) {
+                        strikes[k].removeClass('change');
+                }
+
+                for (let j = 0; j < sections.length; j++) {
+                    sections[j].removeClass('change');
+                }
+
+                for (let i = 0; i < currentElem.length-1; i++) {
+
+                    currentElem[i].addClass('change');
+                }
+                
+            }
+        }
+    }
+
+    createOtherRow({ parent: document.getElementsByTagName('main')[0], data: source.slot });
+
+</script>
+</body>
+</html>
